@@ -9,15 +9,16 @@ BIRDWIDTH = 60
 BIRDHEIGHT = 45
 G = 0.5
 SPEEDFLY = -8
-BIRDIMG = pygame.image.load("img\Khoi.jpg")
-BACKGROUND = pygame.image.load(r"img\background.png")
+BIRDIMG = pygame.image.load("img/long.png")
+BACKGROUND2 = pygame.image.load("img/bg_day_2.png")
+BACKGROUND = pygame.image.load(r"img/bg_day.png")
 # Columns
-COLUMNWIDTH = 60
-COLUMNHEIGHT = 500
+COLUMNWIDTH = 52
+COLUMNHEIGHT = 320
 BLANK = 200
 DISTANCE = 200
 COLUMNSPEED = 2
-COLUMNIMG = pygame.image.load('img\column.png')
+COLUMNIMG = pygame.image.load('img\pipe green.png')
 
 pygame.init()
 FPS = 60
@@ -87,7 +88,7 @@ class Score():
         self.addScore = True
 
     def draw(self):
-        font = pygame.font.SysFont('consolas', 40)
+        font = pygame.font.SysFont('#9Slide07 VT323', 40)
         scoreSuface = font.render(str(self.score), True, (0, 0, 0))
         textSize = scoreSuface.get_size()
         DISPLAYSURF.blit(scoreSuface, (int((WINDOWWIDTH - textSize[0])/2), 100))
@@ -158,13 +159,13 @@ def gamePlay(bird, columns, score):
 
 def gameStart(bird):
     bird.__init__()
-
-    font = pygame.font.SysFont('consolas', 60)
-    headingSuface = font.render('FLAPPY BIRD', True, (255, 0, 0))
+    
+    font = pygame.font.SysFont('#9Slide07 VT323', 80)
+    headingSuface = font.render('', True, (255, 255, 255))
     headingSize = headingSuface.get_size()
-
-    font = pygame.font.SysFont('consolas', 20)
-    commentSuface = font.render('Click to start', True, (0, 0, 0))
+    
+    font = pygame.font.SysFont('#9Slide07 VT323', 30)
+    commentSuface = font.render('', True, (255, 255, 255))
     commentSize = commentSuface.get_size()
 
     while True:
@@ -175,7 +176,7 @@ def gameStart(bird):
             if event.type == MOUSEBUTTONDOWN:
                 return
 
-        DISPLAYSURF.blit(BACKGROUND, (0, 0))
+        DISPLAYSURF.blit(BACKGROUND2, (0, 0))
         bird.draw(0)
         DISPLAYSURF.blit(headingSuface, (int((WINDOWWIDTH - headingSize[0])/2), 100))
         DISPLAYSURF.blit(commentSuface, (int((WINDOWWIDTH - commentSize[0])/2), 500))
@@ -184,15 +185,15 @@ def gameStart(bird):
         fpsClock.tick(FPS)
 
 def gameOver(bird, columns, score):
-    font = pygame.font.SysFont('consolas', 60)
-    headingSuface = font.render('GAMEOVER', True, (255, 0, 0))
+    font = pygame.font.SysFont('#9Slide07 VT323', 80)
+    headingSuface = font.render('GAMEOVER \n', True, (238, 155, 110))
     headingSize = headingSuface.get_size()
 
-    font = pygame.font.SysFont('consolas', 20)
+    font = pygame.font.SysFont('#9Slide07 VT323', 30)
     commentSuface = font.render('Press "space" to replay', True, (0, 0, 0))
     commentSize = commentSuface.get_size()
 
-    font = pygame.font.SysFont('consolas', 30)
+    font = pygame.font.SysFont('#9Slide07 VT323', 40)
     scoreSuface = font.render('Score: ' + str(score.score), True, (0, 0, 0))
     scoreSize = scoreSuface.get_size()
 
